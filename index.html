@@ -1,219 +1,249 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carolus Cahyo Echa — Coming Soon</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    min-height: 100vh;
-    background: #0d1117;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
-    overflow: hidden;
-    position: relative;
-  }
-
-  canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 2rem;
-    max-width: 600px;
-  }
-
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #427AB5;
-    border: 1px solid rgba(66,122,181,0.4);
-    background: rgba(66,122,181,0.10);
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 2rem;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 700;
-    color: #eef2f7;
-    line-height: 1.1;
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.02em;
-  }
-
-  h1 span {
-    background: linear-gradient(135deg, #427AB5, #5B94CC, #7ab3e0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .desc {
-    font-size: 16px;
-    color: #5a7a99;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .countdown {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 3rem;
-  }
-
-  .unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .number {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #dce6f0;
-    background: rgba(66,122,181,0.07);
-    border: 1px solid rgba(66,122,181,0.18);
-    border-radius: 12px;
-    width: 76px;
-    height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-variant-numeric: tabular-nums;
-    transition: transform 0.1s;
-  }
-
-  .label {
-    font-size: 10px;
-    color: #3a5a78;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .social-btn:hover { border-color: rgba(66,122,181,0.5); color: #427AB5; }
-
-  .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
-</style>
-</head>
-<body>
-<canvas id="c"></canvas>
-
-<div class="content">
-  <div class="badge">Portfolio — Coming Soon</div>
-
-  <h1>Something <span>awesome</span><br>is on its way.</h1>
-
-  <p class="desc">Lagi dibangun dengan sepenuh hati. Segera hadir — stay tuned!</p>
-
-<script>
-// Particle canvas
-const canvas = document.getElementById('c');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-
-function resize() {
-  W = canvas.width = innerWidth;
-  H = canvas.height = innerHeight;
-}
-
-function createParticles() {
-  particles = Array.from({length: 80}, () => ({
-    x: Math.random() * W,
-    y: Math.random() * H,
-    r: Math.random() * 1.5 + 0.3,
-    dx: (Math.random() - 0.5) * 0.3,
-    dy: (Math.random() - 0.5) * 0.3,
-    o: Math.random() * 0.5 + 0.1
-  }));
-}
-
-function draw() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(66,122,181,${p.o})`;
-    ctx.fill();
-    p.x += p.dx; p.y += p.dy;
-    if (p.x < 0 || p.x > W) p.dx *= -1;
-    if (p.y < 0 || p.y > H) p.dy *= -1;
-  });
-
-  // Draw connections
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 100) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(66,122,181,${0.06 * (1 - dist/100)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carolus Cahyo Echa — Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Nunito:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  }
 
-  requestAnimationFrame(draw);
-}
+    body {
+      min-height: 100vh;
+      background: #0d1117;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', 'Segoe UI', sans-serif;
+      overflow: hidden;
+      position: relative;
+      cursor: none;
+    }
 
-resize();
-createParticles();
-draw();
-window.addEventListener('resize', () => { resize(); createParticles(); });
+    /* Cursor */
+    .cursor {
+      width: 8px;
+      height: 8px;
+      background: #427AB5;
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .25s, height .25s;
+    }
 
-// Countdown — target: 30 hari dari sekarang
-const target = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
-function pad(n) { return String(n).padStart(2, '0'); }
+    .cursor-ring {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid rgba(66, 122, 181, .4);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+    }
 
-function tick() {
-  const now = new Date();
-  const diff = Math.max(0, target - now);
-  const days = Math.floor(diff / 86400000);
-  const hrs  = Math.floor((diff % 86400000) / 3600000);
-  const mins = Math.floor((diff % 3600000) / 60000);
-  const secs = Math.floor((diff % 60000) / 1000);
-  document.getElementById('d').textContent = pad(days);
-  document.getElementById('h').textContent = pad(hrs);
-  document.getElementById('m').textContent = pad(mins);
-  document.getElementById('s').textContent = pad(secs);
-}
-tick();
-setInterval(tick, 1000);
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-// Subscribe
-function subscribe() {
-  const val = document.getElementById('email').value;
-  if (!val || !val.includes('@')) return;
-  document.getElementById('form').style.display = 'none';
-  document.getElementById('success').style.display = 'block';
-}
-</script>
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      max-width: 600px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #427AB5;
+      border: 1px solid rgba(66, 122, 181, 0.4);
+      background: rgba(66, 122, 181, 0.10);
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      color: #eef2f7;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #427AB5, #5B94CC, #7ab3e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .desc {
+      font-size: 16px;
+      color: #5a7a99;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    .social-btn:hover {
+      border-color: rgba(66, 122, 181, 0.5);
+      color: #427AB5;
+    }
+
+    .social-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="c"></canvas>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="content">
+    <div class="badge">Portfolio — Coming Soon</div>
+
+    <h1>Something <span>awesome</span><br>is on its way.</h1>
+
+    <p class="desc">Lagi dibangun dengan sepenuh hati. Segera hadir — stay tuned!</p>
+
+    <script>
+      // Particle canvas
+      const canvas = document.getElementById('c');
+      const ctx = canvas.getContext('2d');
+      let W, H, particles = [];
+
+      let mouseX = -9999, mouseY = -9999;
+      const MOUSE_RADIUS = 160;
+
+      function resize() {
+        W = canvas.width = innerWidth;
+        H = canvas.height = innerHeight;
+      }
+
+      function createParticles() {
+        particles = Array.from({ length: 80 }, () => {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 0.3 + 0.15;
+          return {
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: Math.random() * 1.5 + 0.3,
+            bx: Math.cos(angle) * speed,  // base drift X (always moves)
+            by: Math.sin(angle) * speed,  // base drift Y (always moves)
+            vx: 0,  // extra velocity from mouse
+            vy: 0,
+            o: Math.random() * 0.5 + 0.1
+          };
+        });
+      }
+
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+          // Mouse repulsion
+          const dx = p.x - mouseX;
+          const dy = p.y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MOUSE_RADIUS && dist > 0) {
+            const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.8;
+            p.vx += (dx / dist) * force;
+            p.vy += (dy / dist) * force;
+          }
+          // Dampen only extra velocity
+          p.vx *= 0.96;
+          p.vy *= 0.96;
+          // Move: base drift + extra
+          p.x += p.bx + p.vx;
+          p.y += p.by + p.vy;
+          // Wrap edges
+          if (p.x < 0) p.x = W;
+          if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H;
+          if (p.y > H) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(66,122,181,${p.o})`;
+          ctx.fill();
+        });
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              const alpha = (1 - dist / 140) * 0.18;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(66,122,181,${alpha})`;
+              ctx.lineWidth = 0.7;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      createParticles();
+      draw();
+      window.addEventListener('resize', () => { resize(); createParticles(); });
+
+      // Cursor
+      const cur = document.getElementById('cursor'), cring = document.getElementById('cursorRing');
+      let cmx = 0, cmy = 0, crx = 0, cry = 0;
+      document.addEventListener('mousemove', e => {
+        cmx = e.clientX; cmy = e.clientY;
+        cur.style.left = cmx + 'px'; cur.style.top = cmy + 'px';
+        mouseX = cmx; mouseY = cmy;
+      });
+      (function cloop() { crx += (cmx - crx) * .13; cry += (cmy - cry) * .13; cring.style.left = crx + 'px'; cring.style.top = cry + 'px'; requestAnimationFrame(cloop); })();
+
+    </script>
 </body>
+
 </html>
