@@ -2,17 +2,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carolus Cahyo Echa — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     min-height: 100vh;
-    background: #0a0a0f;
+    background: #0d1117;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-sans, 'Segoe UI', sans-serif);
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
     overflow: hidden;
     position: relative;
   }
@@ -39,9 +43,9 @@
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #7c6fff;
-    border: 1px solid rgba(124,111,255,0.4);
-    background: rgba(124,111,255,0.08);
+    color: #427AB5;
+    border: 1px solid rgba(66,122,181,0.4);
+    background: rgba(66,122,181,0.10);
     padding: 6px 16px;
     border-radius: 20px;
     margin-bottom: 2rem;
@@ -49,15 +53,15 @@
 
   h1 {
     font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 500;
-    color: #f0efe8;
+    font-weight: 700;
+    color: #eef2f7;
     line-height: 1.1;
     margin-bottom: 1.25rem;
     letter-spacing: -0.02em;
   }
 
   h1 span {
-    background: linear-gradient(135deg, #7c6fff, #a78bfa, #c084fc);
+    background: linear-gradient(135deg, #427AB5, #5B94CC, #7ab3e0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -65,7 +69,7 @@
 
   .desc {
     font-size: 16px;
-    color: #888;
+    color: #5a7a99;
     line-height: 1.7;
     margin-bottom: 2.5rem;
     max-width: 420px;
@@ -90,9 +94,9 @@
   .number {
     font-size: 2.5rem;
     font-weight: 500;
-    color: #f0efe8;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    color: #dce6f0;
+    background: rgba(66,122,181,0.07);
+    border: 1px solid rgba(66,122,181,0.18);
     border-radius: 12px;
     width: 76px;
     height: 76px;
@@ -105,12 +109,12 @@
 
   .label {
     font-size: 10px;
-    color: #555;
+    color: #3a5a78;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
-  .social-btn:hover { border-color: rgba(124,111,255,0.5); color: #7c6fff; }
+  .social-btn:hover { border-color: rgba(66,122,181,0.5); color: #427AB5; }
 
   .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
 </style>
@@ -152,7 +156,7 @@ function draw() {
   particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(124,111,255,${p.o})`;
+    ctx.fillStyle = `rgba(66,122,181,${p.o})`;
     ctx.fill();
     p.x += p.dx; p.y += p.dy;
     if (p.x < 0 || p.x > W) p.dx *= -1;
@@ -169,7 +173,7 @@ function draw() {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(124,111,255,${0.06 * (1 - dist/100)})`;
+        ctx.strokeStyle = `rgba(66,122,181,${0.06 * (1 - dist/100)})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
